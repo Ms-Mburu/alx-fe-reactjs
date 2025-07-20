@@ -1,52 +1,78 @@
-import { useState } from 'react';
+// src/components/Contact.jsx
+import React, { useState } from 'react';
 
-   function Contact() {
-     const [formData, setFormData] = useState({
-       name: '',
-       email: '',
-       message: ''
-     });
+function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
 
-     const handleChange = (e) => {
-       setFormData({ ...formData, [e.target.name]: e.target.value });
-     };
+  const [submitted, setSubmitted] = useState(false);
 
-     const handleSubmit = (e) => {
-       e.preventDefault();
-       alert('Form submitted!');
-     };
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-     return (
-       <div style={{ padding: '20px' }}>
-         <h1>Contact Us</h1>
-         <form onSubmit={handleSubmit}>
-           <input
-             type="text"
-             name="name"
-             placeholder="Your Name"
-             value={formData.name}
-             onChange={handleChange}
-             style={{ display: 'block', margin: '10px 0' }}
-           />
-           <input
-             type="email"
-             name="email"
-             placeholder="Your Email"
-             value={formData.email}
-             onChange={handleChange}
-             style={{ display: 'block', margin: '10px 0' }}
-           />
-           <textarea
-             name="message"
-             placeholder="Your Message"
-             value={formData.message}
-             onChange={handleChange}
-             style={{ display: 'block', margin: '10px 0' }}
-           />
-           <button type="submit">Send Message</button>
-         </form>
-       </div>
-     );
-   }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulate form submission
+    console.log('Form submitted:', formData);
+    setSubmitted(true);
+    // Optionally reset form
+    setFormData({ name: '', email: '', message: '' });
+  };
 
-   export default Contact;
+  return (
+    <div style={{ padding: '20px', maxWidth: '500px', margin: '0 auto' }}>
+      <h2>Contact Us</h2>
+      {submitted ? (
+        <p style={{ color: 'green' }}>Thank you! Your message has been received.</p>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: '10px' }}>
+            <label>Name:</label><br />
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              style={{ width: '100%' }}
+            />
+          </div>
+
+          <div style={{ marginBottom: '10px' }}>
+            <label>Email:</label><br />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              style={{ width: '100%' }}
+            />
+          </div>
+
+          <div style={{ marginBottom: '10px' }}>
+            <label>Message:</label><br />
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              style={{ width: '100%' }}
+            />
+          </div>
+
+          <button type="submit">Send Message</button>
+        </form>
+      )}
+    </div>
+  );
+}
+
+export default Contact;
