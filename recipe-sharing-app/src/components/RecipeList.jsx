@@ -1,20 +1,22 @@
+import React from 'react';
 import { useRecipeStore } from './recipeStore';
 
-
-function RecipeList() {
-  const recipes = useRecipeStore(state => state.filteredRecipes);
+const RecipeList = () => {
+  const recipes = useRecipeStore(state => state.recipes);
+  const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
 
   return (
     <div>
-      <h2>All Recipes</h2>
+      <h2>Recipe List</h2>
       {recipes.map(recipe => (
         <div key={recipe.id}>
           <h3>{recipe.title}</h3>
           <p>{recipe.description}</p>
+          <button onClick={() => deleteRecipe(recipe.id)}>Delete</button>
         </div>
       ))}
     </div>
   );
-}
+};
 
 export default RecipeList;
