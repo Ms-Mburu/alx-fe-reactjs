@@ -8,10 +8,26 @@ import RecommendationsList from './components/RecommendationsList';
 
 function App() {
   return (
-    <div>
-      {/* Other components like SearchBar, RecipeList, etc. */}
+    <Router>
+      <div>
+        <h1>Recipe Sharing App</h1>
+
+        {/* ✅ STEP 2: Show the Add Recipe Form at the top of the homepage */}
+        <AddRecipeForm />
+
+        {/* These are your page routes */}
+        <Routes>
+          <Route path="/" element={<RecipeList />} />
+          <Route path="/recipes/:id" element={<RecipeDetails />} />
+          <Route path="/edit/:id" element={<EditRecipeForm />} />
+        </Routes>
+      </div>
+       <div>
+
       <RecommendationsList />
     </div>
+    </Router>
+    
   );
 }
 
