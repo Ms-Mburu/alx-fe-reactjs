@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.github.com';
-
-export async function fetchUserData(username) {
-  const response = await axios.get(`${BASE_URL}/users/${username}`);
+export const fetchUserData = async (username) => {
+  const response = await axios.get(`https://api.github.com/users/${username}`);
   return response.data;
-}
+};
 
-export async function searchUsersAdvanced(query) {
-  const response = await axios.get(`${BASE_URL}/search/users?q=${encodeURIComponent(query)}`);
-  return response.data;
+export const searchUsersAdvanced = async (query) => {
+  const response = await axios.get(`https://api.github.com/search/users?q=${query}`);
+  return response.data; 
+};
