@@ -5,7 +5,7 @@ function Search() {
   const [username, setUsername] = useState('');
   const [location, setLocation] = useState('');
   const [minRepos, setMinRepos] = useState('');
-  const [users, setUsers] = useState([]); // multiple results
+  const [users, setUsers] = useState([]); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -22,7 +22,7 @@ function Search() {
       const data = await searchUsersAdvanced(query.trim());
       setUsers(data.items || []);
     } catch (err) {
-      setError('Looks like we can’t find matching users.');
+      setError('Looks like we cant find the user');
     } finally {
       setLoading(false);
     }
