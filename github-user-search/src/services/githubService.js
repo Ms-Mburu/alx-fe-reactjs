@@ -1,31 +1,17 @@
-
 import axios from 'axios';
-const BASE_URL = 'https://api.github.com';
 
 export const fetchUserData = async (username) => {
-  if (!username) throw new Error('No username provided');
-  const res = await axios.get(`${BASE_URL}/users/${encodeURIComponent(username)}`);
-  return res.data;
+  const response = await axios.get(`https://api.github.com/users/${username}`);
+  return response.data;
 };
 
+// New function for advanced search with location and minRepos filters
+export const searchUsersAdvanced = async ({ username = '', location = '', minRepos = 0 }) => {
+  let query = '';
+  if (username) query += `${username} in:login`;
+  if (location) query += ` location:${location}`;
+  if (minRepos > 0) query += ` repos:>=${minRepos}`;
 
-export const searchUsersAdvanced = async (query, page = 1, per_page = 30) => {
-  if (!query) throw new Error('No query provided');
-  const res = await axios.get(`${BASE_URL}/search/users`, {
-    params: { q: query, page, per_page },
-  });
-  return res.data;
-};
-
-
-export const fetchUsersDetailsFromItems = async (items = []) => {
-  if (!items.length) return [];
-  const requests = items.map((it) =>
-    axios
-      .get(`${BASE_URL}/users/${encodeURIComponent(it.login)}`)
-      .then((r) => ({ ...it, ...r.data })) 
-      .catch(() => ({ ...it, error: true })) 
-  );
-  const results = await Promise.all(requests);
-  return results;
+  const response = await axios.get(`https://api.github.com/search/users?q=${encodeURIComponent(query.trim())}`);
+  return response.data;
 };
