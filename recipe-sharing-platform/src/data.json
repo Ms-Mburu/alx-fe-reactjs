@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": [
+      "200g spaghetti",
+      "2 eggs",
+      "100g pancetta",
+      "50g parmesan cheese",
+      "Black pepper",
+      "Salt"
+    ],
+    "instructions": "Boil pasta until al dente. Fry pancetta until crispy. Whisk eggs with grated parmesan. Off heat, toss hot pasta with pancetta and egg-cheese mixture until creamy. Season with pepper and salt."
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Grilled chicken (tikka) in a creamy tomato-based masala.",
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": [
+      "500g chicken breast, cubed",
+      "1 cup yogurt",
+      "2 tbsp tikka masala spice",
+      "2 cups tomato puree",
+      "1/2 cup cream",
+      "Salt"
+    ],
+    "instructions": "Marinate chicken in yogurt and spices, grill until charred. Simmer tomato puree with spices, stir in cream, add chicken, and cook until flavors meld. Serve with rice or naan."
+  },
+  {
+    "id": 3,
+    "title": "Veggie Stir-Fry",
+    "summary": "Quick, colorful stir-fry with mixed vegetables and soy-ginger sauce.",
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": [
+      "1 red bell pepper, sliced",
+      "1 cup broccoli florets",
+      "1 carrot, sliced",
+      "2 tbsp soy sauce",
+      "1 tsp grated ginger",
+      "1 clove garlic, minced"
+    ],
+    "instructions": "Stir-fry veggies over high heat. Add soy, ginger, and garlic. Toss to coat and serve immediately."
+  }
+]
